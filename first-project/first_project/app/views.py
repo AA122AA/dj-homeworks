@@ -1,7 +1,8 @@
+import os
+from datetime import datetime
+
 from django.http import HttpResponse
 from django.shortcuts import render, reverse
-from datetime import datetime
-import os
 
 
 def home_view(request):
