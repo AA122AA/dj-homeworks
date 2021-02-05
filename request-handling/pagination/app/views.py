@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.conf import settings
 from django.core.paginator import Paginator
+from urllib.parse import quote_plus, urlencode
+from django.core.handlers.wsgi import WSGIRequest
 
 import csv
 
@@ -22,17 +24,16 @@ def createList()->list:
     return bus_stations_list
 
 
-def bus_stations(request):
-    bus_stations_list = createList()
+def bus_stations(request: WSGIRequest):
     paginator = Paginator(createList(), 10)
-    current_page = 1
-    page_number = request.GET.get("page", current_page)
+    page_number = int(request.GET.get("page", 1))
     page = paginator.get_page(page_number)
-    next_page_url = f'{reverse(bus_stations)}?page={str(page_number+1)}'
+    next_page_url = reverse(bus_stations) + "?" + urlencode({"page":str(page_number + 1)})
+    prev_page_url = reverse(bus_stations) + "?" + urlencode({"page":str(page_number - 1)})
     return render(request, 'index.html', context={
         'bus_stations': page.object_list,
-        'current_page': current_page,
-        'prev_page_url': None,
+        'current_page': page_number,
+        'prev_page_url': prev_page_url,
         'next_page_url': next_page_url,
     })
 
