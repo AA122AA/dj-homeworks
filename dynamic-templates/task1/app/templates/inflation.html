@@ -17,6 +17,42 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
+        <table>
+          <tr>
+            {% for h in headers %}
+              <td>
+                {{h}}
+              </td>
+            {% endfor %}
+          </tr>
+        {%for el in data%}
+          <tr>
+            {% for k, v in el.items %}
+              {% if v == "" %}
+                  <td style="background-color: white">-</td>
+              {% else %}
+                {% if k == "Sum" %}
+                  <td style="background-color: grey">{{v}}</td>
+                {% else %}
+                  {% if k != "Year" %}
+                    {% if v > 1 and v <= 2 %}
+                      <td style="background-color: #ffc8bd">{{v}}</td>
+                    {% elif v > "2" and v <= 5 %}
+                      <td style="background-color: #ff886e">{{v}}</td>
+                    {% elif v > 5 %}
+                      <td style="background-color: red">{{v}}</td>
+                    {% elif v < 0 %}
+                      <td style="background-color: green">{{v}}</td>
+                    {% else %}
+                      <td style="background-color: white">{{v}}</td>
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          <tr>
+        {% endfor %}
+        </table>
         
         <!-- Ваша логика -->
 
