@@ -1,3 +1,5 @@
+{% load my_filters %}
+
 <!DOCTYPE html>{% load static %}
 <html>
   <head>
@@ -31,21 +33,23 @@
               {% if v == "" %}
                   <td style="background-color: white">-</td>
               {% else %}
-                {% if k == "Sum" %}
+                {% if "Сумм" in k %}
                   <td style="background-color: grey">{{v}}</td>
                 {% else %}
-                  {% if k != "Year" %}
-                    {% if v > 1 and v <= 2 %}
+                  {% if k != "Год" %}
+                    {% if v|to_float > 1 and v|to_float <= 2 %}
                       <td style="background-color: #ffc8bd">{{v}}</td>
-                    {% elif v > "2" and v <= 5 %}
+                    {% elif v|to_float > 2 and v|to_float <= 5 %}
                       <td style="background-color: #ff886e">{{v}}</td>
-                    {% elif v > 5 %}
+                    {% elif v|to_float > 5 %}
                       <td style="background-color: red">{{v}}</td>
-                    {% elif v < 0 %}
+                    {% elif v|to_float < 0 %}
                       <td style="background-color: green">{{v}}</td>
                     {% else %}
                       <td style="background-color: white">{{v}}</td>
                     {% endif %}
+                  {% else %}
+                    <td style="background-color: white">{{v}}</td>
                   {% endif %}
                 {% endif %}
               {% endif %}
