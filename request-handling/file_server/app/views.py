@@ -11,7 +11,7 @@ def createDict(file):
     return data
  
 
-def file_list(request, date = None):
+def file_list(request, date:datetime = None):
     template_name = 'index.html'
     # Реализуйте алгоритм подготавливающий контекстные данные для шаблона по примеру:
     files = listdir(settings.FILES_PATH)
@@ -21,8 +21,8 @@ def file_list(request, date = None):
             parsedFiles.append(createDict(file))
     else:
         for file in files:
-            f_date = str(datetime.datetime.fromtimestamp(int(stat(f"{settings.FILES_PATH}/{file}").st_ctime)).date())
-            if f_date == date:
+            f_date = datetime.datetime.fromtimestamp(int(stat(f"{settings.FILES_PATH}/{file}").st_ctime)).date()
+            if f_date == date.date():
                 parsedFiles.append(createDict(file))
     context = {
             'files': parsedFiles,
