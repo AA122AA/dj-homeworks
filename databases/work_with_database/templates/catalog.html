@@ -13,6 +13,13 @@
         </div>
 
         <div class="content">
+            {% for p in phones %}
+            <div class="phone">
+                <a href={%url "product" p.slug%}><h2 style="color:blue">{{p.name}}</h2></a>
+                <p class="price">Стоимость: {{p.price}}p</p>
+                <img src={{p.image}} class="image"></img>
+            </div>
+            {% endfor %}
             {# Здесь должен отображаться каталог с телефонами #}
         </div>
     </div>

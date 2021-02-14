@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from phones.models import Phone
 
 
 def show_catalog(request):
     template = 'catalog.html'
-    context = {}
+    p = Phone.objects.all()
+    context = {"phones": list(p)}
     return render(request, template, context)
 
 

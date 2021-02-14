@@ -51,10 +51,10 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postappdb',
+        'NAME': 'postgresapp',
         'USER': 'artem',
         'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'HOST': '192.168.0.30',
     }
 }
 

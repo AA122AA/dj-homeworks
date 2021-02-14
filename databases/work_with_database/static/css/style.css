@@ -3,9 +3,18 @@
     margin-bottom: 50px;
 }
 
-.phone {
+.image {
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+div.phone {
+    display: inline-block;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-right: 50px;
+    width: auto;
+    height: 600px;
 }
 
 .sort-block .sort-item {
