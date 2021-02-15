@@ -4,11 +4,14 @@
 {% block title %}Телефон{% endblock %}
 {% block content %}
     <div class="container">
-        <div class="header">
-            <h1>Телефон</h1>
+        <div class="header-full">
+            <h1>{{phone.name}}</h1>
         </div>
         <div class="content">
-
+            <div class="phone-full">
+                <p class="price-full">Стоимость: {{phone.price}}p</p>
+                <div class="image-full"><img src={{phone.image}} ></img></div>
+            </div>
         </div>
     </div>
 {% endblock %}

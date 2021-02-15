@@ -17,6 +17,7 @@ div.phone {
     height: 600px;
 }
 
+
 .sort-block .sort-item {
     padding-right: 20px;
 }
@@ -25,3 +26,29 @@ div.phone {
     font-weight: bold;
 }
 
+.header-full {
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+
+}
+
+.phone-full {
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.price-full {
+    font-size: larger;
+    margin: auto;
+    width: 50%;
+    font-weight: bold;
+}
+
+.image-full {
+    width: 60%;
+    margin: auto;
+}

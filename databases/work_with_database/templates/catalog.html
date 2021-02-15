@@ -9,7 +9,7 @@
         </div>
 
         <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
+            <p> Сортировать по: <a href={% url "catalog" %}?sort=name> Названию </a><a href={% url "catalog" %}?sort=min_price>По возрастанию цены</a> <a href={% url "catalog" %}?sort=max_price>По Убыванию цены</a></p>
         </div>
 
         <div class="content">
