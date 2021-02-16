@@ -1,11 +1,14 @@
 from django.shortcuts import render
 
-from phones.models import Phone
+from phones.models import Phone, Apple, Samsung, Nokia
 
 
 def show_catalog(request):
     template = 'catalog.html'
-    phones = Phone.objects.all()
+    phones = []
+    phones.append(list(Apple.objects.all()))
+    phones.append(list(Samsung.objects.all()))
+    phones.append(list(Nokia.objects.all()))
 
-    context = {}
+    context = {"phones": phones}
     return render(request, template, context)

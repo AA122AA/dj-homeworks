@@ -8,7 +8,36 @@
             <h1>Сравнение телефонов</h1>
         </div>
         <div class="content">
-
+            <div class="phone">
+                <p> Название: </p>
+                <p> Цена: </p>
+                <p> Дата выпуска: </p>
+                <p> LTE: </p>
+                <p> Bluetooth: </p>
+                <p> Операционная система: </p>
+                <p> Количество камер: </p>
+                <p> Объем оперативной памяти: </p>
+                <p> Объем постоянной памяти: </p>
+                <p> Характеристики экрана: </p>
+                <p> Объем батареи: </p>
+            </div>
+            {% for phone in phones %}
+                <div class="phone">
+                    <p> {{phone.name}} </p>
+                    <p> {{phone.price}}р </p>
+                    <p> {{phone.release_date}} </p>
+                    <p> {{phone.lte_exists}} </p>
+                    <p> {{phone.bluetooth_exists}} </p>
+                    <p> {{phone.os}} </p>
+                    <p> {{phone.camera_amount}} </p>
+                    <p> {{phone.ram}} </p>
+                    <p> {{phone.rom}} </p>
+                    <p> {{phone.screen}} </p>
+                    <p> {{phone.battery}} </p>
+                    <p> {{phone.Samsung.Dex}} </p>
+                    <p> {{phone.Apple.FaceId}} </p>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

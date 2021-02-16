@@ -1,16 +1,18 @@
 from django.db import models
 
-class Ram(models.IntegerChoices):
-        gb16 = 16, "16gb"
-        gb8 = 8, "8gb"
-        gb4 = 4, "4gb"
-        other = 0, "Other"
+class Ram(models.TextChoices):
+        gb16 = "16gb"
+        gb8 = "8gb"
+        gb4 = "4gb"
+        other = "Other"
+        kb1 = "1kb"
 
-class Rom(models.IntegerChoices):
-        gb64 = 64, "64gb"
-        gb128 = 128, "128gb"
-        gb256 = 256, "256gb"
-        other = 0, "Other"
+class Rom(models.TextChoices):
+        gb64 = "64gb"
+        gb128 = "128gb"
+        gb256 = "256gb"
+        other = "Other"
+        kb1 = "1kb"
 
 class OS(models.TextChoices):
         adroid = "Android"
@@ -18,24 +20,38 @@ class OS(models.TextChoices):
         other = "Other"
 
 class Phone(models.Model):
-    name = models.CharField(max_length=50)
-    price = models.IntegerField()
-    release_date = models.DateField()
-    lte_exists = models.BooleanField()
-    bluetooth_exists = models.BooleanField()
-    os = models.CharField(choices= OS.choices, max_length=15)
-    megapixels = models.IntegerField()
-    ram = models.IntegerField(choices = Ram.choices)
-    rom = models.IntegerField(choices = Rom.choices)
-    screen = models.CharField(max_length=40)
-    slug = models.SlugField()
-    battery = models.IntegerField()
+    name = models.CharField(max_length=50, default="phone")
+    price = models.IntegerField(default=10)
+    release_date = models.DateField(default="2000-09-01")
+    lte_exists = models.BooleanField(default=True)
+    bluetooth_exists = models.BooleanField(default=True)
+    os = models.CharField(choices= OS.choices, max_length=15, blank=True)
+    camera_amount = models.IntegerField(default=1)
+    ram = models.TextField(choices = Ram.choices, blank=True)
+    rom = models.TextField(choices = Rom.choices, blank=True)
+    screen = models.CharField(max_length=40, blank=True)
+    battery = models.IntegerField(default=3000)
+
+    class Meta:
+        abstract = True
 
     def __str__(self):
         return self.name
     
 class Samsung(Phone):
-    Dex = models.BooleanField()
+    Dex = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 
 class Apple(Phone):
-    FaceId = models.BooleanField()
+    FaceId = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+class Nokia(Phone):
+    Durability = models.TextField(max_length=15, default="Great")
+
+    def __str__(self):
+        return self.name
