@@ -1,18 +1,18 @@
 from django.db import models
 
 class Ram(models.TextChoices):
-        gb16 = "16gb"
-        gb8 = "8gb"
-        gb4 = "4gb"
+        gb16 = "16GB"
+        gb8 = "8GB"
+        gb4 = "4GB"
         other = "Other"
-        kb1 = "1kb"
+        kb1 = "1KB"
 
 class Rom(models.TextChoices):
-        gb64 = "64gb"
-        gb128 = "128gb"
-        gb256 = "256gb"
+        gb64 = "64GB"
+        gb128 = "128GB"
+        gb256 = "256GB"
         other = "Other"
-        kb1 = "1kb"
+        kb1 = "1KB"
 
 class OS(models.TextChoices):
         adroid = "Android"

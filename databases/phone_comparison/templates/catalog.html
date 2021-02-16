@@ -20,23 +20,28 @@
                 <p> Объем постоянной памяти: </p>
                 <p> Характеристики экрана: </p>
                 <p> Объем батареи: </p>
+                <p> Dex: </p>
+                <p> FaceId: </p>
+
             </div>
-            {% for phone in phones %}
-                <div class="phone">
-                    <p> {{phone.name}} </p>
-                    <p> {{phone.price}}р </p>
-                    <p> {{phone.release_date}} </p>
-                    <p> {{phone.lte_exists}} </p>
-                    <p> {{phone.bluetooth_exists}} </p>
-                    <p> {{phone.os}} </p>
-                    <p> {{phone.camera_amount}} </p>
-                    <p> {{phone.ram}} </p>
-                    <p> {{phone.rom}} </p>
-                    <p> {{phone.screen}} </p>
-                    <p> {{phone.battery}} </p>
-                    <p> {{phone.Samsung.Dex}} </p>
-                    <p> {{phone.Apple.FaceId}} </p>
-                </div>
+            {% for model in phones %}
+                {% for phone in model %}
+                    <div class="phone">
+                        <p> {{phone.name}} </p>
+                        <p> {{phone.price}}р </p>
+                        <p> {{phone.release_date}} </p>
+                        <p> {% if phone.lte_exists %} Yes {% else %} - {% endif %} </p>
+                        <p> {% if phone.bluetooth_exists%} Yes {% else %} - {% endif %}</p>
+                        <p> {{phone.os}} </p>
+                        <p> {{phone.camera_amount}} </p>
+                        <p> {{phone.ram}} </p>
+                        <p> {{phone.rom}} </p>
+                        <p> {{phone.screen}} </p>
+                        <p> {{phone.battery}} mAh</p>
+                        <p> {% if phone.Dex %} Yes {% else %} - {% endif %}</p>
+                        <p> {% if phone.FaceId %} Yes {% else %} - {% endif %}</p>
+                    </div>
+                {% endfor %}
             {% endfor %}
         </div>
     </div>
