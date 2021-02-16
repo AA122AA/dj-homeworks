@@ -16,5 +16,41 @@
       "author": "Джордж Оруэл",
       "pub_date": "2016-12-06"
     }
+  },
+  {
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+      "name": "Цеветы для Элджернона",
+      "author": "Дэниел Киз",
+      "pub_date": "2017-10-06"
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+      "name": "Процесс",
+      "author": "Франц Кафка",
+      "pub_date": "2013-05-16"
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+      "name": "Финансист",
+      "author": "Теодор Драйзер",
+      "pub_date": "2017-10-06"
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+      "name": "Сияние",
+      "author": "Стивен Кинг",
+      "pub_date": "2018-09-10"
+    }
   }
 ]
