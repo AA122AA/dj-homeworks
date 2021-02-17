@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.urls import reverse
 
+from urllib.parse import urlencode
 from books.models import Book
 from datetime import datetime
 
@@ -17,10 +19,11 @@ def books_view(request, date:datetime=None):
     template = 'books/books_list.html'
     books = Book.objects.all()
     context = {"books": books}
-    paginator = Paginator(dates(books), 10)
-    page = paginator.get_page(page_number)
-    next_page_url = reverse(bus_stations) + "?" + urlencode({"page":str(page_number + 1)})
-    prev_page_url = reverse(bus_stations) + "?" + urlencode({"page":str(page_number - 1)})
+    pub_dates = dates(books)
+    print(pub_dates)
+    #отсортировать даты, затем добавлять элемент до и элемент после в сраницу
+    next_page_url = reverse("books") + "/" + date
+    prev_page_url = reverse("books") + "/" + date
     if date:
         try:
             books = []
