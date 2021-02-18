@@ -59,6 +59,7 @@ DATABASES = {
         'USER': 'artem',
         'PASSWORD': '1234',
         'HOST': '192.168.0.30',
+        'PORT': '5122',
     }
 }
 # Password validation
