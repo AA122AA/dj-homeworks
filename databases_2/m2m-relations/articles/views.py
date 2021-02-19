@@ -6,7 +6,10 @@ from articles.models import Article
 
 def articles_list(request):
     template = 'articles/news.html'
-    context = {}
+    articles = Article.objects.all()
+    context = {
+        'articles': list(articles)
+    }
 
     # используйте этот параметр для упорядочивания результатов
     # https://docs.djangoproject.com/en/2.2/ref/models/querysets/#django.db.models.query.QuerySet.order_by
