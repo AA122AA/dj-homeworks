@@ -7,21 +7,21 @@ from .models import Article, Tags, TagsArticles
 
 class TagsInlineFormset(BaseInlineFormSet):
     def clean(self):
+        arr_main = []
         for form in self.forms:
-            # В form.cleaned_data будет словарь с данными
-            # каждой отдельной формы, которые вы можете проверить
-            form.cleaned_data
-            print(form)
-            print("\n in form \n")
+            print("\n", form.cleaned_data, "\n")
             if form.cleaned_data.get("is_main"):
-                return super().clean()
+                arr_main.append(form.cleaned_data)
+            if form.cleaned_data.get("article"):
+                pass
             else:
-                raise ValidationError('Укажите главный тэг')
-            # вызовом исключения ValidationError можно указать админке о наличие ошибки
-            # таким образом объект не будет сохранен,
-            # а пользователю выведется соответствующее сообщение об ошибке
-            raise ValidationError('Тут всегда ошибка')
-        return super().clean()  # вызываем базовый код переопределяемого метода
+                return super().clean()
+        if len(arr_main) > 1:
+            raise ValidationError('Главный тэг может быть только один')
+        elif len(arr_main) == 0:
+            raise ValidationError('Выберите главный тэг')
+        else:
+            return super().clean()
 
 class InlineTags(admin.TabularInline):
     model = TagsArticles

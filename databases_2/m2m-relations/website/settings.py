@@ -77,7 +77,7 @@ DATABASES = {
         'NAME': 'm2m_relations',
         'USER': 'artem',
         'PASSWORD': '1234',
-        'HOST': '192.168.0.30',
+        'HOST': '188.242.131.186',
         'PORT': '5122',
     }
 }
