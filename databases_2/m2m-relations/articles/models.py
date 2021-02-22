@@ -18,7 +18,11 @@ class Article(models.Model):
 class Tags(models.Model):
 
     tag = models.CharField(max_length=50)
-    articles = models.ManyToManyField(Article, through='TagsArticles')
+    articles = models.ManyToManyField(
+        Article, 
+        related_name = "tags", 
+        through='TagsArticles'
+        )
 
     class Meta:
         verbose_name = 'Тэг'
@@ -38,4 +42,8 @@ class TagsArticles(models.Model):
         Tags,
         verbose_name="Тэг",
         on_delete=models.CASCADE
+        )
+    is_main = models.BooleanField(
+        verbose_name="Главный тэг",
+        blank=True, null=True
         )
