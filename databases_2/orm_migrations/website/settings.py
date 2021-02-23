@@ -74,10 +74,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'netology_orm_migrations',
-        'USER': 'artem',
-        'PASSWORD': '1234',
-        'HOST': '188.242.131.186',
-        'PORT': '5122',
+        'USER': os.getenv("USER"),
+        'PASSWORD': os.getenv("PASSWORD"),
+        'HOST': os.getenv("IP"),
+        'PORT': os.getenv("PORT"),
     }
 }
 
