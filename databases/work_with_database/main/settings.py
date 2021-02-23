@@ -52,9 +52,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgresapp',
-        'USER': 'artem',
-        'PASSWORD': '1234',
-        'HOST': '192.168.0.30',
+        'USER': os.getenv("USER"),
+        'PASSWORD': os.getenv("PASSWORD"),
+        'HOST': os.getenv("IP"),
+        'PORT': os.getenv("PORT"),
     }
 }
 
