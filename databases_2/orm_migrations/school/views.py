@@ -6,12 +6,10 @@ from .models import Student, Teacher
 
 def students_list(request):
     template = 'school/students_list.html'
-    students = Student.objects.all()
-    teachers = Teacher.objects.all()
+    students = Student.objects.prefetch_related("teacher")
     print(students)
     context = {
         'students': students,
-        'teachers': teachers
         }
 
     # используйте этот параметр для упорядочивания результатов
