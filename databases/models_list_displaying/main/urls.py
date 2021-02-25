@@ -13,8 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import debug_toolbar
 from django.contrib import admin
-from django.urls import path, register_converter
+from django.urls import path, register_converter, include
 
 from books.views import books_view
 
@@ -35,4 +36,5 @@ urlpatterns = [
     path('books/', books_view, name='books'),
     path('books/<datetime:date>', books_view, name='books'),
     path('admin/', admin.site.urls),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
