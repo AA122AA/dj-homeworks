@@ -1,41 +1,52 @@
 # примеры API-запросов
 
 # получение объявлений
-GET localhost:8000/api/advertisements/
+GET http://localhost:8000/api/advertisements/
 Content-Type: application/json
 
 ###
 # создание объявления
-POST localhost:8000/api/advertisements/
+POST http://localhost:8000/api/advertisements/
 Content-Type: application/json
-Authorization: Token 902ef055a9ac93f18327f1f9c45ab059f1a62c7d
+Authorization: Token 9e7965c94d2edebd6a23d4d4d5080e9b87f6812b
 
 {
-  "title": "Шкаф IKEA",
-  "description": "Срочно"
+  "title": "Table",
+  "description": "It is what it is"
 }
 
 ###
 
 # попытка поменять объявление
-PATCH localhost:8000/api/advertisements/1/
+PATCH http://localhost:8000/api/advertisements/5/
 Content-Type: application/json
-Authorization: Token 902ef055a9ac93f18327f1f9c45ab059f1a62c7d
+Authorization: Token 9e7965c94d2edebd6a23d4d4d5080e9b87f6812b
 
 {
-  "status": "CLOSED"
+  "status": "OPEN"
 }
 
 ###
 
 # фильтрация по создателю
-GET localhost:8000/api/advertisements/?creator=3
+GET http://localhost:8000/api/advertisements/?creator=2
 Content-Type: application/json
 
 ###
 
 # фильтрация по дате
-GET localhost:8000/api/advertisements/?created_at_before=2020-10-01
+GET http://localhost:8000/api/advertisements/?created_at_after=2020-10-01
 Content-Type: application/json
 
 ###
+
+# фильтрация по  статусу
+GET http://localhost:8000/api/advertisements/?status=CLOSED
+Content-Type: application/json
+
+###
+
+# Удаление объявления
+DELETE http://localhost:8000/api/advertisements/4/
+Content-Type: application/json
+Authorization: Token 40e55cbd1553ca6e063b6f07ad06739d3b096896
